@@ -1,16 +1,14 @@
 import database.MovieDatabaseInterface;
 import entity.Entity;
 import entity.Fingerprint;
-import entity.FingerprintBuilder;
+import entity.builder.FingerprintBuilder;
 import entity.Moods;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
+
 import request.MoodRequest;
 import request.RequestCalculator;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -77,6 +75,7 @@ public class RequestTest {
                 .filter(movie -> movie.getPrint().getMoods().get(Moods.HAPPY)<10)
                 .collect(Collectors.toList()));
         RequestCalculator rc = new RequestCalculator(requestWithExtraRule, m);
+
         Assert.assertEquals(rc.getTopPick().get().getPrint(), lessHappyMovie);
     }
 }

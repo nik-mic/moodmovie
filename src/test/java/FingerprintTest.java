@@ -1,5 +1,5 @@
 import entity.Fingerprint;
-import entity.FingerprintBuilder;
+import entity.builder.FingerprintBuilder;
 import entity.Moods;
 import org.junit.Assert;
 import org.junit.Test;

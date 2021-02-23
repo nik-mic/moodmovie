@@ -13,4 +13,9 @@ public class Fingerprint {
                 .mapToInt(mood -> mood.compare(this.moods.get(mood), f.moods.get(mood)))
                 .sum();
     }
+
+    @Override
+    public String toString(){
+        return moods.toString();
+    }
 }
