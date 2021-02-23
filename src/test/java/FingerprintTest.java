@@ -21,7 +21,8 @@ public class FingerprintTest {
     @Test
     public void fingerprintHasValues(){
         Fingerprint f = builderHappyMovie.generate();
-        assert f.getMoods().get(Moods.HAPPY) == 10;
+
+        Assert.assertEquals(10, (int)f.getMoods().get(Moods.HAPPY));
     }
 
     @Test
@@ -29,20 +30,22 @@ public class FingerprintTest {
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other = builderHappyMovie.generate();
 
-        assert own.compare(other)==0;
+        Assert.assertEquals(0, own.compare(other));
     }
 
     @Test
     public void fingerPrintCanBeComparedDifferent(){
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other= builderHorrorMovie.generate();
-        assert own.compare(other)==24;
+
+        Assert.assertEquals(own.compare(other), 24);
     }
 
     @Test
     public void comparingIsBijektiv(){
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other= builderHorrorMovie.generate();
+
         Assert.assertEquals(own.compare(other), other.compare(own));
     }
 }

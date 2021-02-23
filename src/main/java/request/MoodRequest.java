@@ -1,12 +1,10 @@
 package request;
 
-import database.MovieDatabaseInterface;
 import entity.Entity;
 import entity.Fingerprint;
 import lombok.Value;
-
 import java.util.List;
-import java.util.Map;
+
 
 @Value
 public class MoodRequest {
