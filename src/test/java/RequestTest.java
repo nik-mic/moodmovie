@@ -3,9 +3,11 @@ import entity.Entity;
 import entity.Fingerprint;
 import entity.builder.FingerprintBuilder;
 import entity.Moods;
+import entity.builder.MovieBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
+import request.IsAdultRule;
 import request.MoodRequest;
 import request.RequestCalculator;
 import java.util.ArrayList;
@@ -45,10 +47,10 @@ public class RequestTest {
 
     MovieDatabaseInterface m = () -> {
         List<Entity> movies = new ArrayList<>();
-        movies.add(new Entity(null, horrorMovie, null));
-        movies.add(new Entity(null, happyMovie, null));
-        movies.add(new Entity(null, brutalMovie, null));
-        movies.add(new Entity(null, lessHappyMovie, null));
+        movies.add(new Entity(MovieBuilder.builder().movieId(123).build().generate(), horrorMovie, null));
+        movies.add(new Entity(MovieBuilder.builder().movieId(124).build().generate(), happyMovie, null));
+        movies.add(new Entity(MovieBuilder.builder().movieId(125).build().generate(), brutalMovie, null));
+        movies.add(new Entity(MovieBuilder.builder().movieId(126).build().generate(), lessHappyMovie, null));
         return movies;
     };
 
@@ -83,5 +85,15 @@ public class RequestTest {
                 .build();
 
         Assert.assertEquals(rc.getTopPick().get().getPrint(), lessHappyMovie);
+    }
+
+    @Test
+    public void filterTroughFSK(){
+        MoodRequest requestWithExtraRule = new MoodRequest(happyMovie, new IsAdultRule());
+        RequestCalculator rc = RequestCalculator.builder()
+                .DB(m)
+                .request(requestWithExtraRule)
+                .build();
+        Assert.assertFalse(rc.getTopPick().isPresent());
     }
 }

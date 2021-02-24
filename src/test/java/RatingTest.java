@@ -2,6 +2,7 @@ import api.APIStarter;
 import entity.Entity;
 import entity.Rating;
 import entity.builder.EntityBuilder;
+import info.movito.themoviedbapi.model.MovieDb;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,5 +17,10 @@ public class RatingTest {
     public void EntityHasRating(){
         Assert.assertTrue(e.getRating().getRating()==69
                 && e.getRating().getRecension().equals("Test"));
+    }
+
+    @Test
+    public void filterMovieByRating(){
+
     }
 }

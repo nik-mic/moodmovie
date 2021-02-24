@@ -12,19 +12,19 @@ public class Main {
     public static void main(String[] args) {
         MovieDatabaseInterface db = new LocalDatabase();
         MoodRequest mr = new MoodRequest(FingerprintBuilder.builder()
-                .BLOOD(10)
-                .HAPPY(10)
-                .HORROR(10)
-                .ACTION(10)
-                .ART(10)
-                .LOVE(10)
-                .COMEDY(10)
+                .BLOOD(5)
+                .HAPPY(5)
+                .HORROR(5)
+                .ACTION(5)
+                .ART(5)
+                .LOVE(5)
+                .COMEDY(5)
                 .FANTASY(10)
-                .Experience(10)
-                .STORY(10)
+                .Experience(5)
+                .STORY(5)
                 .build().generate()
-                , s -> s.stream().filter(t->t.getRating().getRating()<95).collect(Collectors.toList()));
+                , s -> s);
         RequestCalculator rc = RequestCalculator.builder().DB(db).request(mr).build();
-        System.out.println(rc.getTopPick().get());
+        System.out.println(rc.getTopPick().get() + ": " + rc.getTopPick().get().getContent().isAdult());
     }
 }
