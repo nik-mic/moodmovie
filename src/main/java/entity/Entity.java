@@ -11,6 +11,6 @@ public class Entity {
 
     @Override
     public String toString(){
-        return content.toString() + ":" + print.toString() + ":" + rating.toString();
+        return content.toString() + ":" + rating.toString();
     }
 }

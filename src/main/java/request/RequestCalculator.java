@@ -3,6 +3,7 @@ package request;
 import com.google.common.collect.Lists;
 import database.MovieDatabaseInterface;
 import entity.Entity;
+import lombok.Builder;
 import lombok.Value;
 
 import java.util.Comparator;
@@ -11,6 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Value
+@Builder
 public class RequestCalculator {
     MoodRequest request;
     MovieDatabaseInterface DB;

@@ -64,7 +64,10 @@ public class RequestTest {
 
     @Test
     public void findsHappyMovie(){
-        RequestCalculator rc = new RequestCalculator(basicRequestOfHappyMovie, m);
+        RequestCalculator rc = RequestCalculator.builder()
+                .DB(m)
+                .request(basicRequestOfHappyMovie)
+                .build();
 
         Assert.assertEquals(happyMovie, rc.getTopPick().get().getPrint());
     }
@@ -74,7 +77,10 @@ public class RequestTest {
         MoodRequest requestWithExtraRule = new MoodRequest(happyMovie, s -> s.stream()
                 .filter(movie -> movie.getPrint().getMoods().get(Moods.HAPPY)<10)
                 .collect(Collectors.toList()));
-        RequestCalculator rc = new RequestCalculator(requestWithExtraRule, m);
+        RequestCalculator rc = RequestCalculator.builder()
+                .DB(m)
+                .request(requestWithExtraRule)
+                .build();
 
         Assert.assertEquals(rc.getTopPick().get().getPrint(), lessHappyMovie);
     }
