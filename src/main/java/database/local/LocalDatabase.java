@@ -130,5 +130,21 @@ public class LocalDatabase implements MovieDatabaseInterface {
                         .STORY(7)
                         .build().generate())
                 .MOVIE(MovieBuilder.builder().movieId(22538).build().generate()).build().generate());
+
+        entities.add(EntityBuilder.builder()
+                .RATING(Rating.builder().rating(92).recension("frightening").build())
+                .FINGERPRINT(FingerprintBuilder.builder()
+                        .BLOOD(9)
+                        .HAPPY(1)
+                        .HORROR(9)
+                        .ACTION(0)
+                        .ART(10)
+                        .LOVE(6)
+                        .COMEDY(0)
+                        .FANTASY(2)
+                        .EXPERIENCE(7)
+                        .STORY(4)
+                        .build().generate())
+                .MOVIE(MovieBuilder.builder().movieId(17609).build().generate()).build().generate());
     }
 }

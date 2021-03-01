@@ -1,3 +1,4 @@
+import api.APIStarter;
 import database.MovieDatabaseInterface;
 import entity.Entity;
 import entity.Fingerprint;
@@ -5,12 +6,17 @@ import entity.Rating;
 import entity.builder.FingerprintBuilder;
 import entity.Moods;
 import entity.builder.MovieBuilder;
+import info.movito.themoviedbapi.model.Genre;
 import org.junit.Assert;
 import org.junit.Test;
 
 import request.filter.IsAdultRule;
 import request.MoodRequest;
 import request.RequestCalculator;
+import request.filter.IsGenreRule;
+import sun.awt.SunHints;
+import util.Values;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,9 +55,9 @@ public class RequestTest {
     MovieDatabaseInterface m = () -> {
         List<Entity> movies = new ArrayList<>();
         movies.add(new Entity(MovieBuilder.builder().movieId(123).build().generate(), horrorMovie, Rating.builder().rating(1).build()));
-        movies.add(new Entity(MovieBuilder.builder().movieId(124).build().generate(), happyMovie, Rating.builder().rating(1).build()));
-        movies.add(new Entity(MovieBuilder.builder().movieId(125).build().generate(), brutalMovie, Rating.builder().rating(1).build()));
-        movies.add(new Entity(MovieBuilder.builder().movieId(126).build().generate(), lessHappyMovie, Rating.builder().rating(1).build()));
+        movies.add(new Entity(MovieBuilder.builder().movieId(124).build().generate(), happyMovie, Rating.builder().rating(2).build()));
+        movies.add(new Entity(MovieBuilder.builder().movieId(125).build().generate(), brutalMovie, Rating.builder().rating(3).build()));
+        movies.add(new Entity(MovieBuilder.builder().movieId(126).build().generate(), lessHappyMovie, Rating.builder().rating(4).build()));
         return movies;
     };
 
@@ -90,12 +96,24 @@ public class RequestTest {
     }
 
     @Test
-    public void filterTroughFSK(){
+    public void filterFSK(){
         MoodRequest requestWithExtraRule = new MoodRequest(happyMovie, new IsAdultRule());
         RequestCalculator rc = RequestCalculator.builder()
                 .DB(m)
                 .request(requestWithExtraRule)
                 .build();
         Assert.assertFalse(rc.getTopPick().isPresent());
+    }
+
+    @Test
+    public void filterGenre(){
+        Genre g = APIStarter.INSTANCE.getAPI().getMovies().getMovie(123, Values.LANGUAGE_SHORT).getGenres().get(0);
+        IsGenreRule rule = new IsGenreRule(g);
+        MoodRequest requestWithExtraRule = new MoodRequest(happyMovie, rule);
+        RequestCalculator rc = RequestCalculator.builder()
+                .DB(m)
+                .request(requestWithExtraRule)
+                .build();
+        Assert.assertTrue(rc.getTopPick().isPresent());
     }
 }
