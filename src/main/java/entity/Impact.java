@@ -1,8 +1,11 @@
 package entity;
 
+import lombok.Value;
+
+@Value
 public class Impact {
-    private final int WEIGHT;
-    private final int GOAL;
+    int WEIGHT;
+    int GOAL;
 
     public Impact(int goal, int weight){
         this.WEIGHT = classify(weight);
@@ -14,15 +17,6 @@ public class Impact {
             return 2;
         } else if(value<0){
             return 0;
-        }
-        return 1;
-    }
-
-    public int getWEIGHT() {
-        return WEIGHT;
-    }
-
-    public int getGOAL(){
-        return GOAL;
+        } return 1;
     }
 }

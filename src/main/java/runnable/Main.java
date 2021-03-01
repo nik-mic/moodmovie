@@ -15,10 +15,12 @@ public class Main {
                 .HORROR(4)
                 .ACTION(0)
                 .ART(10)
+                .ACTION_WEIGHT(-100)
                 .LOVE(4)
                 .COMEDY(0)
                 .FANTASY(2)
                 .EXPERIENCE(0)
+                .EXPERIENCE_WEIGHT(100)
                 .STORY(0)
                 .build().generate()
                 , s -> s);

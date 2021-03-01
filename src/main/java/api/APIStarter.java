@@ -2,6 +2,7 @@ package api;
 
 import info.movito.themoviedbapi.TmdbApi;
 import lombok.Value;
+import util.Values;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +13,7 @@ public enum APIStarter {
 
     private final TmdbApi API;
     APIStarter() {
-        try (Scanner s = new Scanner(new File("api-key.txt"))){
+        try (Scanner s = new Scanner(new File(Values.PATH_TO_API_KEY))){
             String APIKEY = s.next();
             API = new TmdbApi(APIKEY);
         } catch (FileNotFoundException e) {

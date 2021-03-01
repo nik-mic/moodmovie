@@ -1,6 +1,7 @@
 import database.MovieDatabaseInterface;
 import entity.Entity;
 import entity.Fingerprint;
+import entity.Rating;
 import entity.builder.FingerprintBuilder;
 import entity.Moods;
 import entity.builder.MovieBuilder;
@@ -47,10 +48,10 @@ public class RequestTest {
 
     MovieDatabaseInterface m = () -> {
         List<Entity> movies = new ArrayList<>();
-        movies.add(new Entity(MovieBuilder.builder().movieId(123).build().generate(), horrorMovie, null));
-        movies.add(new Entity(MovieBuilder.builder().movieId(124).build().generate(), happyMovie, null));
-        movies.add(new Entity(MovieBuilder.builder().movieId(125).build().generate(), brutalMovie, null));
-        movies.add(new Entity(MovieBuilder.builder().movieId(126).build().generate(), lessHappyMovie, null));
+        movies.add(new Entity(MovieBuilder.builder().movieId(123).build().generate(), horrorMovie, Rating.builder().rating(1).build()));
+        movies.add(new Entity(MovieBuilder.builder().movieId(124).build().generate(), happyMovie, Rating.builder().rating(1).build()));
+        movies.add(new Entity(MovieBuilder.builder().movieId(125).build().generate(), brutalMovie, Rating.builder().rating(1).build()));
+        movies.add(new Entity(MovieBuilder.builder().movieId(126).build().generate(), lessHappyMovie, Rating.builder().rating(1).build()));
         return movies;
     };
 

@@ -28,7 +28,7 @@ public class RequestCalculator {
     }
 
     private Integer scoreSim(Entity movie){
-        return request.compare(movie.getPrint());
+        return request.compare(movie);
     }
 
     public Optional<Entity> getTopPick(){
@@ -37,7 +37,7 @@ public class RequestCalculator {
     }
     public List<Entity> getSelection(){
         List<Entity> rawSelect = new ArrayList<>(Values.NUMBER_OF_PICKS);
-        // TODO complete function
+
         return null;
     }
 }
