@@ -6,22 +6,20 @@ import entity.builder.FingerprintBuilder;
 import request.MoodRequest;
 import request.RequestCalculator;
 
-import java.util.stream.Collectors;
-
 public class Main {
     public static void main(String[] args) {
         MovieDatabaseInterface db = new LocalDatabase();
         MoodRequest mr = new MoodRequest(FingerprintBuilder.builder()
-                .BLOOD(5)
-                .HAPPY(5)
-                .HORROR(5)
-                .ACTION(5)
-                .ART(5)
-                .LOVE(5)
-                .COMEDY(5)
-                .FANTASY(10)
-                .Experience(5)
-                .STORY(5)
+                .BLOOD(0)
+                .HAPPY(1)
+                .HORROR(4)
+                .ACTION(0)
+                .ART(10)
+                .LOVE(4)
+                .COMEDY(0)
+                .FANTASY(2)
+                .EXPERIENCE(0)
+                .STORY(0)
                 .build().generate()
                 , s -> s);
         RequestCalculator rc = RequestCalculator.builder().DB(db).request(mr).build();

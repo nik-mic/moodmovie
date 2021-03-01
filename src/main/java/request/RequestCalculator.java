@@ -1,11 +1,12 @@
 package request;
 
-import com.google.common.collect.Lists;
 import database.MovieDatabaseInterface;
 import entity.Entity;
 import lombok.Builder;
 import lombok.Value;
+import util.Values;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -33,5 +34,10 @@ public class RequestCalculator {
     public Optional<Entity> getTopPick(){
         final List<Entity> topPicks = handleRequest();
         return topPicks.isEmpty() ? Optional.empty() : Optional.of(topPicks.get(0));
+    }
+    public List<Entity> getSelection(){
+        List<Entity> rawSelect = new ArrayList<>(Values.NUMBER_OF_PICKS);
+        // TODO complete function
+        return null;
     }
 }

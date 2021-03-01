@@ -1,4 +1,4 @@
-package request;
+package request.filter;
 
 import entity.Entity;
 import java.util.List;

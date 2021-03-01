@@ -7,7 +7,7 @@ import entity.builder.MovieBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import request.IsAdultRule;
+import request.filter.IsAdultRule;
 import request.MoodRequest;
 import request.RequestCalculator;
 import java.util.ArrayList;
@@ -77,8 +77,9 @@ public class RequestTest {
     @Test
     public void appliesExtraRule(){
         MoodRequest requestWithExtraRule = new MoodRequest(happyMovie, s -> s.stream()
-                .filter(movie -> movie.getPrint().getMoods().get(Moods.HAPPY)<10)
+                .filter(movie -> movie.getPrint().getMoods().get(Moods.HAPPY).getGOAL()<10)
                 .collect(Collectors.toList()));
+
         RequestCalculator rc = RequestCalculator.builder()
                 .DB(m)
                 .request(requestWithExtraRule)

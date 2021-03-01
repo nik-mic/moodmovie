@@ -14,7 +14,7 @@ public class APITest {
     }
 
     @Test
-    public void getMovieInfo(){
+    public void canGetMovieInfo(){
         String movieToText = api.getMovies().getMovie(507076, "en").toString();
 
         Assert.assertEquals("Climax - 2018-09-19", movieToText);

@@ -3,13 +3,14 @@ package request;
 import entity.Entity;
 import entity.Fingerprint;
 import lombok.Value;
+import request.filter.SearchRule;
+
 import java.util.List;
 
 
 @Value
 public class MoodRequest {
     Fingerprint fingerprint;
-    // List<Integer> weights;
     SearchRule extraRule;
 
 

@@ -22,7 +22,7 @@ public class FingerprintTest {
     public void fingerprintHasValues(){
         Fingerprint f = builderHappyMovie.generate();
 
-        Assert.assertEquals(10, (int)f.getMoods().get(Moods.HAPPY));
+        Assert.assertEquals(10, f.getMoods().get(Moods.HAPPY).getGOAL());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class FingerprintTest {
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other= builderHorrorMovie.generate();
 
-        Assert.assertEquals(own.compare(other), 24);
+        Assert.assertEquals(24, own.compare(other));
     }
 
     @Test

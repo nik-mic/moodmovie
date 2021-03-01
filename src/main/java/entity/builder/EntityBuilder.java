@@ -3,7 +3,6 @@ package entity.builder;
 import entity.Entity;
 import entity.Fingerprint;
 import entity.Rating;
-import entity.builder.Buildable;
 import info.movito.themoviedbapi.model.MovieDb;
 import lombok.Builder;
 import lombok.Value;

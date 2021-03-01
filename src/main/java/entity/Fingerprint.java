@@ -6,7 +6,7 @@ import java.util.Map;
 @Value
 public class Fingerprint {
 
-    Map<Moods, Integer> moods;
+    Map<Moods, Impact> moods;
 
     public int compare(Fingerprint f){
         return f.getMoods().keySet().stream()
