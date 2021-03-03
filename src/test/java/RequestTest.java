@@ -116,4 +116,14 @@ public class RequestTest {
                 .build();
         Assert.assertTrue(rc.getTopPick().isPresent());
     }
+
+    @Test
+    public void getCorrectAmountOfSelections(){
+        MoodRequest request = new MoodRequest(happyMovie);
+        RequestCalculator rc = RequestCalculator.builder()
+                .DB(m)
+                .request(request)
+                .build();
+        Assert.assertEquals(Values.NUMBER_OF_PICKS, rc.getSelection().size());
+    }
 }

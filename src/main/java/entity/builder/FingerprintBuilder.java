@@ -10,26 +10,16 @@ import java.util.Map;
 
 @Builder
 public class FingerprintBuilder implements Buildable<Fingerprint> {
-    @Builder.Default
-    int BLOOD_WEIGHT = 0;
-    @Builder.Default
-    int HAPPY_WEIGHT = 0;
-    @Builder.Default
-    int HORROR_WEIGHT = 0;
-    @Builder.Default
-    int ART_WEIGHT = 0;
-    @Builder.Default
-    int ACTION_WEIGHT = 0;
-    @Builder.Default
-    int FANTASY_WEIGHT = 0;
-    @Builder.Default
-    int EXPERIENCE_WEIGHT = 0;
-    @Builder.Default
-    int STORY_WEIGHT = 0;
-    @Builder.Default
-    int LOVE_WEIGHT = 0;
-    @Builder.Default
-    int COMEDY_WEIGHT = 0;
+    int BLOOD_WEIGHT;
+    int HAPPY_WEIGHT;
+    int HORROR_WEIGHT;
+    int ART_WEIGHT;
+    int ACTION_WEIGHT;
+    int FANTASY_WEIGHT;
+    int EXPERIENCE_WEIGHT;
+    int STORY_WEIGHT;
+    int LOVE_WEIGHT;
+    int COMEDY_WEIGHT;
     int HAPPY;
     int BLOOD;
     int HORROR;

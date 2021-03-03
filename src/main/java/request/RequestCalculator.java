@@ -3,10 +3,9 @@ package request;
 import database.MovieDatabaseInterface;
 import entity.Entity;
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import util.Values;
-
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -27,17 +26,17 @@ public class RequestCalculator {
         );
     }
 
-    private Integer scoreSim(Entity movie){
-        return request.compare(movie);
+    private Integer scoreSim(Entity target){
+        return request.compare(target);
     }
 
     public Optional<Entity> getTopPick(){
         final List<Entity> topPicks = handleRequest();
         return topPicks.isEmpty() ? Optional.empty() : Optional.of(topPicks.get(0));
     }
-    public List<Entity> getSelection(){
-        List<Entity> rawSelect = new ArrayList<>(Values.NUMBER_OF_PICKS);
 
-        return null;
+    public List<Entity> getSelection(){
+        List <Entity> raw = handleRequest();
+        return handleRequest().subList(0, Math.min(raw.size(), Values.NUMBER_OF_PICKS));
     }
 }

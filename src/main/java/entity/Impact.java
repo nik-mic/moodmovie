@@ -7,9 +7,9 @@ public class Impact {
     int WEIGHT;
     int GOAL;
 
-    public Impact(int goal, int weight){
-        this.WEIGHT = classify(weight);
-        this.GOAL = goal;
+    public Impact(int GOAL, int WEIGHT){
+        this.WEIGHT = classify(WEIGHT);
+        this.GOAL = GOAL;
     }
 
     private int classify(int value){
