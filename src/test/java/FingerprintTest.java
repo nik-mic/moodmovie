@@ -42,7 +42,7 @@ public class FingerprintTest {
     }
 
     @Test
-    public void comparingIsBijektiv(){
+    public void comparingIsBijective(){
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other= builderHorrorMovie.generate();
 

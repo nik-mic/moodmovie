@@ -1,8 +1,6 @@
 package request.filter;
 
 import entity.Entity;
-import request.filter.SearchRule;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

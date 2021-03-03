@@ -1,8 +1,6 @@
 package request.filter;
 
-import api.APIStarter;
 import entity.Entity;
-import info.movito.themoviedbapi.TmdbGenre;
 import info.movito.themoviedbapi.model.Genre;
 import lombok.Value;
 
@@ -18,6 +16,8 @@ public class IsGenreRule implements SearchRule {
 
     @Override
     public List<Entity> search(List<Entity> picks) {
-        return picks.stream().filter(s -> s.getContent().getGenres().contains(genre)).collect(Collectors.toList());
+        return picks.stream()
+                .filter(s -> s.getContent().getGenres().contains(genre))
+                .collect(Collectors.toList());
     }
 }
