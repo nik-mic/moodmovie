@@ -1,8 +1,9 @@
 import entity.Fingerprint;
 import entity.builder.FingerprintBuilder;
 import entity.Moods;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FingerprintTest {
     FingerprintBuilder builderHappyMovie = FingerprintBuilder
@@ -22,7 +23,7 @@ public class FingerprintTest {
     public void fingerprintHasValues(){
         Fingerprint f = builderHappyMovie.generate();
 
-        Assert.assertEquals(10, f.getMoods().get(Moods.HAPPY).getGOAL());
+        assertEquals(10, f.getMoods().get(Moods.HAPPY).getGOAL());
     }
 
     @Test
@@ -30,7 +31,7 @@ public class FingerprintTest {
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other = builderHappyMovie.generate();
 
-        Assert.assertEquals(0, own.compare(other));
+        assertEquals(0, own.compare(other));
     }
 
     @Test
@@ -38,7 +39,7 @@ public class FingerprintTest {
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other= builderHorrorMovie.generate();
 
-        Assert.assertEquals(24, own.compare(other));
+        assertEquals(24, own.compare(other));
     }
 
     @Test
@@ -46,6 +47,6 @@ public class FingerprintTest {
         Fingerprint own = builderHappyMovie.generate();
         Fingerprint other= builderHorrorMovie.generate();
 
-        Assert.assertEquals(own.compare(other), other.compare(own));
+        assertEquals(own.compare(other), other.compare(own));
     }
 }

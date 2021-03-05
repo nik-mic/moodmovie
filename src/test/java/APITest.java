@@ -1,8 +1,8 @@
 import api.APIStarter;
 import info.movito.themoviedbapi.TmdbApi;
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class APITest {
 
@@ -10,13 +10,12 @@ public class APITest {
 
     @Test
     public void canConnect(){
-        Assert.assertTrue(api!=null && api.getApiKey()!=null);
+        assertTrue(api!=null && api.getApiKey()!=null);
     }
 
     @Test
     public void canGetMovieInfo(){
         String movieToText = api.getMovies().getMovie(507076, "en").toString();
-
-        Assert.assertEquals("Climax - 2018-09-19", movieToText);
+        assertEquals("Climax - 2018-09-19", movieToText);
     }
 }

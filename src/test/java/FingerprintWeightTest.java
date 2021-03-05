@@ -3,12 +3,10 @@ import entity.Entity;
 import entity.Fingerprint;
 import entity.Moods;
 import entity.builder.FingerprintBuilder;
-import entity.builder.MovieBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FingerprintWeightTest {
     FingerprintBuilder stan = FingerprintBuilder.builder().LOVE(5).build();
@@ -17,17 +15,17 @@ public class FingerprintWeightTest {
 
     @Test
     public void MoodHasStandardWeight(){
-        Assert.assertEquals(1, getLoveWeight(stan));
+        assertEquals(1, getLoveWeight(stan));
     }
 
     @Test
     public void MoodHasHigherWeight(){
-        Assert.assertEquals(2, getLoveWeight(high));
+        assertEquals(2, getLoveWeight(high));
     }
 
     @Test
     public void MoodHasLowWeight(){
-        Assert.assertEquals(0, getLoveWeight(low));
+        assertEquals(0, getLoveWeight(low));
     }
 
     @Test
@@ -54,7 +52,7 @@ public class FingerprintWeightTest {
                 .HORROR_WEIGHT(100)
                 .build().generate();
 
-        Assert.assertTrue(extremeHorrorMovie.compare(loveMovie)>horrorMovie.compare(loveMovie));
+        assertTrue(extremeHorrorMovie.compare(loveMovie)>horrorMovie.compare(loveMovie));
 
     }
 

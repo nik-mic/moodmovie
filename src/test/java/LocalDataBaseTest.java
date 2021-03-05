@@ -1,29 +1,31 @@
 import database.MovieDatabaseInterface;
 import database.local.LocalDatabase;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LocalDataBaseTest {
     MovieDatabaseInterface m = new LocalDatabase();
 
     @Test
     public void localHasMovies(){
-        Assert.assertTrue(m.getAllMovies().size()>0);
+        assertTrue(m.getAllMovies().size()>0);
     }
 
     @Test
     public void localHasMoreThan40Movies(){
-        Assert.assertEquals(40, m.getAllMovies().size());
+        assertEquals(42, m.getAllMovies().size());
     }
 
     @Test
     public void localOnlyHasUniqueMovies(){
         List <String> names = new ArrayList<>();
         m.getAllMovies().forEach(movie -> names.add(movie.getContent().toString()));
-        Assert.assertTrue(onlyUniqueValues(names));
+        assertTrue(onlyUniqueValues(names));
     }
 
     private boolean onlyUniqueValues(List<String> list){

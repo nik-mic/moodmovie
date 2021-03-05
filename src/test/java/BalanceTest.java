@@ -4,12 +4,13 @@ import entity.Fingerprint;
 import entity.Rating;
 import entity.builder.FingerprintBuilder;
 import entity.builder.MovieBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import request.MoodRequest;
 import request.RequestCalculator;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BalanceTest {
     Fingerprint happyMovie = FingerprintBuilder
@@ -70,6 +71,6 @@ public class BalanceTest {
         RequestCalculator highRating = RequestCalculator.builder().request(high).DB(m).build();
         RequestCalculator lowRating = RequestCalculator.builder().request(low).DB(m).build();
 
-        Assert.assertNotEquals(highRating.getTopPick().get(),lowRating.getTopPick().get());
+        assertNotEquals(highRating.getTopPick().get(),lowRating.getTopPick().get());
     }
 }

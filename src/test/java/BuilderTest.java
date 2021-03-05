@@ -3,8 +3,9 @@ import entity.Rating;
 import entity.builder.EntityBuilder;
 import entity.builder.FingerprintBuilder;
 import entity.builder.MovieBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BuilderTest {
 
@@ -15,7 +16,7 @@ public class BuilderTest {
 
     @Test
     public void Entity01(){
-       Assert.assertEquals("Eraserhead - 1978-02-03:Rating: 10\n" +
+       assertEquals("Eraserhead - 1978-02-03:Rating: 10\n" +
                "Test", one.toString());
     }
 }

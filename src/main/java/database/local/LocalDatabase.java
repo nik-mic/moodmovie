@@ -20,6 +20,7 @@ public class LocalDatabase implements MovieDatabaseInterface {
         return entities;
     }
     private static void load(){
+
         entities = new ArrayList<>();
 
         entities.add(EntityBuilder.builder()
@@ -34,7 +35,7 @@ public class LocalDatabase implements MovieDatabaseInterface {
                         .COMEDY(2)
                         .FANTASY(8)
                         .EXPERIENCE(10)
-                        .STORY(7)
+                        .STORY(6)
                         .build().generate())
                 .MOVIE(MovieBuilder.builder().movieId(62).build().generate()).build().generate());
 
@@ -53,6 +54,7 @@ public class LocalDatabase implements MovieDatabaseInterface {
                         .STORY(8)
                         .build().generate())
                 .MOVIE(MovieBuilder.builder().movieId(264660).build().generate()).build().generate());
+
         entities.add(EntityBuilder.builder()
                 .RATING(Rating.builder().rating(96).recension("Asian stuff").build())
                 .FINGERPRINT(FingerprintBuilder.builder()
@@ -566,7 +568,7 @@ public class LocalDatabase implements MovieDatabaseInterface {
                 .MOVIE(MovieBuilder.builder().movieId(371638).build().generate()).build().generate());
 
         entities.add(EntityBuilder.builder()
-                .RATING(Rating.builder().rating(86).recension("a unique Story, thats not just love").build())
+                .RATING(Rating.builder().rating(86).recension("a unique Story, that is not just love").build())
                 .FINGERPRINT(FingerprintBuilder.builder()
                         .BLOOD(0)
                         .HAPPY(6)
@@ -661,5 +663,36 @@ public class LocalDatabase implements MovieDatabaseInterface {
                         .build().generate())
                 .MOVIE(MovieBuilder.builder().movieId(475557).build().generate()).build().generate());
 
+        entities.add(EntityBuilder.builder()
+                .RATING(Rating.builder().rating(81).recension("neon color on skinny girls and murder").build())
+                .FINGERPRINT(FingerprintBuilder.builder()
+                        .BLOOD(7)
+                        .HAPPY(4)
+                        .HORROR(6)
+                        .ACTION(3)
+                        .ART(8)
+                        .LOVE(2)
+                        .COMEDY(1)
+                        .FANTASY(1)
+                        .EXPERIENCE(7)
+                        .STORY(2)
+                        .build().generate())
+                .MOVIE(MovieBuilder.builder().movieId(301365).build().generate()).build().generate());
+
+        entities.add(EntityBuilder.builder()
+                .RATING(Rating.builder().rating(82).recension("the best chess movie").build())
+                .FINGERPRINT(FingerprintBuilder.builder()
+                        .BLOOD(0)
+                        .HAPPY(7)
+                        .HORROR(1)
+                        .ACTION(3)
+                        .ART(3)
+                        .LOVE(1)
+                        .COMEDY(4)
+                        .FANTASY(0)
+                        .EXPERIENCE(2)
+                        .STORY(9)
+                        .build().generate())
+                .MOVIE(MovieBuilder.builder().movieId(14291).build().generate()).build().generate());
     }
 }

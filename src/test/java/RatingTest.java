@@ -1,9 +1,9 @@
-import api.APIStarter;
 import entity.Entity;
 import entity.Rating;
 import entity.builder.EntityBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RatingTest {
     final Entity e = EntityBuilder.builder()
@@ -13,7 +13,7 @@ public class RatingTest {
 
     @Test
     public void EntityHasRating(){
-        Assert.assertTrue(e.getRating().getRating()==69
+        assertTrue(e.getRating().getRating()==69
                 && e.getRating().getRecension().equals("Test"));
     }
 }

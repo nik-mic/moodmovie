@@ -7,19 +7,17 @@ import entity.builder.FingerprintBuilder;
 import entity.Moods;
 import entity.builder.MovieBuilder;
 import info.movito.themoviedbapi.model.Genre;
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import request.filter.IsAdultRule;
 import request.MoodRequest;
 import request.RequestCalculator;
 import request.filter.IsGenreRule;
-import sun.awt.SunHints;
 import util.Values;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RequestTest {
     Fingerprint happyMovie = FingerprintBuilder
@@ -64,11 +62,11 @@ public class RequestTest {
 
     @Test
     public void RequestHasFingerprint(){
-        Assert.assertNotNull(basicRequestOfHappyMovie.getFingerprint());
+        assertNotNull(basicRequestOfHappyMovie.getFingerprint());
     }
     @Test
     public void RequestHasExtraRule(){
-        Assert.assertNotNull(basicRequestOfHappyMovie.getExtraRule());
+        assertNotNull(basicRequestOfHappyMovie.getExtraRule());
     }
 
     @Test
@@ -78,7 +76,7 @@ public class RequestTest {
                 .request(basicRequestOfHappyMovie)
                 .build();
 
-        Assert.assertEquals(happyMovie, rc.getTopPick().get().getPrint());
+        assertEquals(happyMovie, rc.getTopPick().get().getPrint());
     }
 
     @Test
@@ -92,7 +90,7 @@ public class RequestTest {
                 .request(requestWithExtraRule)
                 .build();
 
-        Assert.assertEquals(rc.getTopPick().get().getPrint(), lessHappyMovie);
+        assertEquals(rc.getTopPick().get().getPrint(), lessHappyMovie);
     }
 
     @Test
@@ -102,7 +100,7 @@ public class RequestTest {
                 .DB(m)
                 .request(requestWithExtraRule)
                 .build();
-        Assert.assertFalse(rc.getTopPick().isPresent());
+        assertFalse(rc.getTopPick().isPresent());
     }
 
     @Test
@@ -114,7 +112,7 @@ public class RequestTest {
                 .DB(m)
                 .request(requestWithExtraRule)
                 .build();
-        Assert.assertTrue(rc.getTopPick().isPresent());
+        assertTrue(rc.getTopPick().isPresent());
     }
 
     @Test
@@ -124,6 +122,6 @@ public class RequestTest {
                 .DB(m)
                 .request(request)
                 .build();
-        Assert.assertEquals(Values.NUMBER_OF_PICKS, rc.getSelection().size());
+        assertEquals(Math.min(Values.NUMBER_OF_PICKS, m.getAllMovies().size()), rc.getSelection().size());
     }
 }
