@@ -16,7 +16,6 @@ public class BuilderTest {
 
     @Test
     public void Entity01(){
-       assertEquals("Eraserhead - 1978-02-03:Rating: 10\n" +
-               "Test", one.toString());
+       assertEquals("Eraserhead - 1978-02-03:Rating: 10\nTest", one.toString());
     }
 }

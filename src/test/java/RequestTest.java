@@ -90,6 +90,7 @@ public class RequestTest {
                 .DB(m)
                 .request(requestWithExtraRule)
                 .build();
+
         assertEquals(Optional.of(lessHappyMovie), rc.getTopPick().map(Entity::getPrint));
     }
 
@@ -100,6 +101,7 @@ public class RequestTest {
                 .DB(m)
                 .request(requestWithExtraRule)
                 .build();
+
         assertFalse(rc.getTopPick().isPresent());
     }
 

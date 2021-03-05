@@ -13,7 +13,7 @@ public class RatingTest {
 
     @Test
     public void EntityHasRating(){
-        assertTrue(e.getRating().getRating()==69
-                && e.getRating().getRecension().equals("Test"));
+        assertTrue(69==e.getRating().getRating()
+                && "Test".equals(e.getRating().getRecension()));
     }
 }
