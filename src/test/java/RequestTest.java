@@ -15,6 +15,7 @@ import request.filter.IsGenreRule;
 import util.Values;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -76,7 +77,7 @@ public class RequestTest {
                 .request(basicRequestOfHappyMovie)
                 .build();
 
-        assertEquals(happyMovie, rc.getTopPick().get().getPrint());
+        assertEquals(Optional.of(happyMovie), rc.getTopPick().map(Entity::getPrint));
     }
 
     @Test
@@ -89,8 +90,7 @@ public class RequestTest {
                 .DB(m)
                 .request(requestWithExtraRule)
                 .build();
-
-        assertEquals(rc.getTopPick().get().getPrint(), lessHappyMovie);
+        assertEquals(Optional.of(lessHappyMovie), rc.getTopPick().map(Entity::getPrint));
     }
 
     @Test

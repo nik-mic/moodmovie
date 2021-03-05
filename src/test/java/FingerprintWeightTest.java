@@ -1,5 +1,3 @@
-import database.MovieDatabaseInterface;
-import entity.Entity;
 import entity.Fingerprint;
 import entity.Moods;
 import entity.builder.FingerprintBuilder;

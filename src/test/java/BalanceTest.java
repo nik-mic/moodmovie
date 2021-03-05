@@ -9,6 +9,7 @@ import request.MoodRequest;
 import request.RequestCalculator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -71,6 +72,6 @@ public class BalanceTest {
         RequestCalculator highRating = RequestCalculator.builder().request(high).DB(m).build();
         RequestCalculator lowRating = RequestCalculator.builder().request(low).DB(m).build();
 
-        assertNotEquals(highRating.getTopPick().get(),lowRating.getTopPick().get());
+        assertNotEquals(Optional.of(highRating.getTopPick()),Optional.of(lowRating.getTopPick()));
     }
 }
