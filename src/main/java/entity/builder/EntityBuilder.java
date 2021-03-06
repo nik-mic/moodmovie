@@ -2,6 +2,7 @@ package entity.builder;
 
 import entity.Entity;
 import entity.Fingerprint;
+import entity.MovieContent;
 import entity.Rating;
 import info.movito.themoviedbapi.model.MovieDb;
 import lombok.Builder;
@@ -11,7 +12,7 @@ import lombok.Value;
 @Value
 public class EntityBuilder implements Buildable<Entity> {
     Rating RATING;
-    MovieDb MOVIE;
+    MovieContent MOVIE;
     Fingerprint FINGERPRINT;
     @Override
     public Entity generate() {

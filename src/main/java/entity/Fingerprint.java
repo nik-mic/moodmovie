@@ -2,6 +2,7 @@ package entity;
 
 import lombok.NonNull;
 import lombok.Value;
+import util.Values;
 
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class Fingerprint {
     }
 
     private int scoring(double balance, int movieRating, Moods mood, Fingerprint f){
-        return ((int) (balance * (100-movieRating) + mood.compare(this.moods.get(mood), f.moods.get(mood))));
+        return ((int) (balance * (Values.MAX_RATING -movieRating) + mood.compare(this.moods.get(mood), f.moods.get(mood))));
     }
 
     private int scoring(Moods m, Fingerprint f){

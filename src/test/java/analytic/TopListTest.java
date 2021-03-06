@@ -1,3 +1,5 @@
+package analytic;
+
 import analytic.DBRatingList;
 import analytic.MovieTopList;
 import analytic.YourRatingList;
@@ -8,11 +10,12 @@ import entity.Fingerprint;
 import entity.Rating;
 import entity.builder.FingerprintBuilder;
 import entity.builder.MovieBuilder;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import util.Values;
-
+import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -79,5 +82,18 @@ public class TopListTest {
                 .isOrdered(your.getRanking().stream()
                         .map(m -> Values.CONVERT_RATING(m.getContent().getUserRating()))
                         .collect(Collectors.toList())));
+    }
+
+    @SneakyThrows
+    @Test
+    public void displaysList(){
+        String target = "1. Short Working Day(1981) - [100/100]\n" +
+                "2. Railway Station(1980) - [15/100]\n" +
+                "3. The Lord of the Rings(1978) - [10/100]\n" +
+                "4. No End(1985) - [5/100]\n";
+        OutputStream out = Mockito.mock(OutputStream.class);
+        MovieTopList your = new YourRatingList(movies);
+        your.display(out);
+        Mockito.verify(out).write(target.getBytes());
     }
 }

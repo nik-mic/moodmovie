@@ -1,3 +1,5 @@
+package request;
+
 import api.APIStarter;
 import database.MovieDatabaseInterface;
 import entity.Entity;
@@ -9,8 +11,6 @@ import entity.builder.MovieBuilder;
 import info.movito.themoviedbapi.model.Genre;
 import org.junit.jupiter.api.Test;
 import request.filter.IsAdultRule;
-import request.MoodRequest;
-import request.RequestCalculator;
 import request.filter.IsGenreRule;
 import util.Values;
 import java.util.ArrayList;

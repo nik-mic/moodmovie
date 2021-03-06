@@ -1,6 +1,11 @@
-import api.APIStarter;
+package api;
+
 import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbMovies;
+import info.movito.themoviedbapi.TmdbPeople;
 import org.junit.jupiter.api.Test;
+import util.Values;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

@@ -1,6 +1,6 @@
-import entity.Fingerprint;
+package entity;
+
 import entity.builder.FingerprintBuilder;
-import entity.Moods;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

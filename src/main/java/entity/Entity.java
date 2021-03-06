@@ -5,7 +5,7 @@ import lombok.Value;
 
 @Value
 public class Entity {
-    MovieDb content;
+    MovieContent content;
     Fingerprint print;
     Rating rating;
 

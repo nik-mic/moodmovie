@@ -1,3 +1,5 @@
+package entity;
+
 import entity.Entity;
 import entity.Rating;
 import entity.builder.EntityBuilder;

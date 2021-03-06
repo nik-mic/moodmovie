@@ -1,5 +1,5 @@
-import entity.Fingerprint;
-import entity.Moods;
+package entity;
+
 import entity.builder.FingerprintBuilder;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,5 @@
-import entity.Entity;
-import entity.Rating;
+package entity;
+
 import entity.builder.EntityBuilder;
 import entity.builder.FingerprintBuilder;
 import entity.builder.MovieBuilder;

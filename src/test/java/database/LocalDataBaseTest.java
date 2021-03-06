@@ -1,3 +1,5 @@
+package database;
+
 import database.MovieDatabaseInterface;
 import database.local.LocalDatabase;
 import org.junit.jupiter.api.Test;
