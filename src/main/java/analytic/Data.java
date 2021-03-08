@@ -3,10 +3,13 @@ package analytic;
 import entity.Entity;
 import entity.Moods;
 import entity.builder.FingerprintBuilder;
+import info.movito.themoviedbapi.model.people.Person;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import util.Values;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Data {
     INSTANCE;
@@ -34,5 +37,29 @@ public enum Data {
             finalMap.put(m, target.get(m)/sum);
         }
         return finalMap;
+    }
+
+    public ImmutablePair<Person, Long> getMostRelevantPerson(MovieTopList movies){
+        return getMostRelevantPersons(movies).get(0);
+    }
+    public List<ImmutablePair<Person, Long>> getPersonsPicks(MovieTopList movies){
+        List<ImmutablePair<Person, Long>> prepare = getMostRelevantPersons(movies);
+        return prepare.subList(0, Math.min(prepare.size(), Values.NUMBER_OF_PICKS));
+    }
+
+    private List<ImmutablePair<Person,Long>> getMostRelevantPersons(MovieTopList movies){
+        final List<Person> test = movies.getRanking().stream()
+                .map(m -> m.getContent().getCredits().getAll())
+                .flatMap(Collection::stream).collect(Collectors.toList());
+
+        final Stream<ImmutablePair<Person, Long>> target = test.stream()
+                .map(mov -> new ImmutablePair<>(mov, test.stream()
+                        .filter(s -> s.equals(mov))
+                        .count()))
+                .distinct();
+
+        return target
+                .sorted(Comparator.comparingLong(s -> -s.right))
+                .collect(Collectors.toList());
     }
 }

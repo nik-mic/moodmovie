@@ -11,19 +11,22 @@ public class Main {
     public static void main(String[] args) {
         MovieDatabaseInterface db = new LocalDatabase();
         MoodRequest mr = new MoodRequest(FingerprintBuilder.builder()
-                .BLOOD(5)
-                .HAPPY(5)
-                .HORROR(8)
-                .ACTION(3)
-                .ART(9)
-                .LOVE(4)
-                .COMEDY(7)
-                .FANTASY(1)
-                .EXPERIENCE(8)
-                .STORY(7)
+                .BLOOD(8)
+                .HAPPY(8)
+                .HORROR(3)
+                .ACTION(7)
+                .ACTION_WEIGHT(-1)
+                .ART(10)
+                .ART_WEIGHT(10)
+                .LOVE(5)
+                .LOVE_WEIGHT(-1)
+                .COMEDY(8)
+                .FANTASY(6)
+                .EXPERIENCE(4)
+                .STORY(6)
                 .build().generate()
                 , s -> s, Values.STANDARD_BALANCE);
         RequestCalculator rc = RequestCalculator.builder().DB(db).request(mr).build();
-        System.out.println(rc.getTopPick().get() + ": " + rc.getTopPick().get().getContent().isAdult());
+        System.out.println(rc.getSelection());
     }
 }

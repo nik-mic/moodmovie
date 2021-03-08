@@ -1,5 +1,7 @@
 package database.local;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import database.MovieDatabaseInterface;
 import entity.Entity;
 import entity.Rating;
@@ -7,20 +9,35 @@ import entity.builder.EntityBuilder;
 import entity.builder.FingerprintBuilder;
 import entity.builder.MovieBuilder;
 import lombok.Value;
+import util.Values;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Value
 public class LocalDatabase implements MovieDatabaseInterface {
+    static final GsonBuilder builder = new GsonBuilder();
     static List<Entity> entities;
+
+    public LocalDatabase(){
+        load();
+    }
+
     @Override
     public List<Entity> getAllMovies() {
-        load();
         return entities;
     }
-    private static void load(){
 
+    private static void load(){
+        try (FileReader r = new FileReader(Values.PATH_TO_LOCAL_DB)){
+            entities = builder.create().fromJson(r, TypeToken.getParameterized(ArrayList.class, Entity.class).getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void reload(){
         entities = new ArrayList<>();
 
         entities.add(EntityBuilder.builder()
@@ -694,5 +711,16 @@ public class LocalDatabase implements MovieDatabaseInterface {
                         .STORY(9)
                         .build().generate())
                 .MOVIE(MovieBuilder.builder().movieId(14291).build().generate()).build().generate());
+    }
+
+    private void safe(){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Values.PATH_TO_LOCAL_DB))){
+            bw.write(builder.create().toJson(getAllMovies()));
+            bw.flush();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("could not find localDB.json.\nlocalDB.json will be created");
+        } catch (IOException e) {
+            throw new RuntimeException("Problem with localDB.json");
+        }
     }
 }

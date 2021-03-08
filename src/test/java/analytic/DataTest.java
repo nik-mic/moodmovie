@@ -59,13 +59,13 @@ public class DataTest {
 
     @Test
     public void calculatesMoodData(){
-        System.out.println(Data.INSTANCE.getMoodPreference(new YourRatingList(movies)));
         assertEquals(1, Data.INSTANCE.getMoodPreference(new YourRatingList(movies)).get(Moods.HAPPY));
     }
 
+
     @Test
-    public void example(){
-        System.out.println(Data.INSTANCE.getMoodPreference(new YourRatingList(new LocalDatabase().getAllMovies())));
+    public void getsMostRelevantPeople(){
+      Assertions.assertEquals("(Krzysztof Kieślowski [1126],5)", Data.INSTANCE.getMostRelevantPerson(new YourRatingList(movies)).toString());
     }
 
 }
